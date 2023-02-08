@@ -1,0 +1,39 @@
+.passwordDisplayArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.loadingSpinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.generatePassbtn {
+  display: inline-block;
+  border: 2px solid #e4e364;
+  background-color: #030504;
+  color: #e4e364;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.generatePassbtn:active {
+  color: #030504;
+  background-color: #e4e364;
+}
+
+.generateContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

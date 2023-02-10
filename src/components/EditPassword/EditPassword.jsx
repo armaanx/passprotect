@@ -3,6 +3,7 @@ import { db } from "../../firebase";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import "./editPassword.css";
+import { decryptPassword, encryptPassword } from "../../encryption";
 
 const EditPassword = ({
   openModal,
@@ -16,7 +17,7 @@ const EditPassword = ({
   const [newName, setNewName] = useState(name);
   const [newUrl, setNewUrl] = useState(url);
   const [newUsername, setNewUsername] = useState(username);
-  const [newPassword, setNewPassword] = useState(password);
+  const [newPassword, setNewPassword] = useState(decryptPassword(password));
   const [showType, setShowType] = useState("password");
   const [showBtnTxt, setShowBtnTxt] = useState("Show");
   const handleShowPass = () => {
@@ -46,7 +47,7 @@ const EditPassword = ({
         name: newName,
         url: newUrl,
         username: newUsername,
-        password: newPassword,
+        password: encryptPassword(newPassword),
       });
       setShowType("password");
       setShowBtnTxt("Show");
@@ -121,7 +122,7 @@ const EditPassword = ({
             setNewName(name);
             setNewUrl(url);
             setNewUsername(username);
-            setNewPassword(password);
+            setNewPassword(decryptPassword(password));
             setShowType("password");
             setShowBtnTxt("Show");
             onClose();

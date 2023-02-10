@@ -8,6 +8,7 @@ import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
 import Snackbar from "@mui/material/Snackbar";
 import "./passwordDisplay.css";
 import { Fragment, useState } from "react";
+import { decryptPassword } from "../../encryption";
 const PasswordDisplay = ({
   name,
   url,
@@ -36,7 +37,7 @@ const PasswordDisplay = ({
   const [passState, setPassState] = useState("Show");
   const handlePassClick = () => {
     if (passState === "Show") {
-      setPassState(password);
+      setPassState(decryptPassword(password));
     } else {
       setPassState("Show");
     }
@@ -53,7 +54,7 @@ const PasswordDisplay = ({
       vertical: "top",
       horizontal: "center",
     });
-    return navigator.clipboard.writeText(password);
+    return navigator.clipboard.writeText(decryptPassword(password));
   };
 
   return (

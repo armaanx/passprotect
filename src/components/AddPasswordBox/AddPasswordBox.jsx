@@ -3,6 +3,7 @@ import { auth, db } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { addDoc, collection } from "firebase/firestore";
 import "./AddPasswordBox.css";
+import { encryptPassword } from "../../encryption";
 const defaultFormFields = {
   name: "",
   url: "",
@@ -41,7 +42,7 @@ const AddPasswordBox = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    addPass(user, name, url, username, password);
+    addPass(user, name, url, username, encryptPassword(password));
     setShowType("password");
     setShowBtnTxt("Show");
     resetFormFields();
